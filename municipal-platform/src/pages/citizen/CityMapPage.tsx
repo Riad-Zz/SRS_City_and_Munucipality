@@ -34,26 +34,26 @@ export function CityMapPage() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-xl font-bold text-gray-900">City Map</h1>
-        <p className="text-sm text-gray-500 mt-0.5">Browse municipal facilities and infrastructure across the city.</p>
+        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">City Map</h1>
+        <p className="text-sm text-slate-500 mt-1 max-w-xl">Browse municipal facilities, infrastructure, and services across the city.</p>
       </div>
 
       {/* Category filters */}
-      <div className="flex gap-2 overflow-x-auto pb-1">
+      <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
         {CATEGORIES.map(c => (
           <button
             key={c.id}
             onClick={() => setActiveCategory(c.id)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium flex-shrink-0 transition-colors ${activeCategory === c.id ? 'bg-[#1a4b8c] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-[#1a4b8c]/40'}`}
+            className={`px-4 py-2 rounded-full text-sm font-semibold flex-shrink-0 transition-all shadow-sm ${activeCategory === c.id ? 'bg-blue-600 text-white ring-2 ring-blue-600 ring-offset-1' : 'bg-white border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-700'}`}
           >
             {c.label}
           </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Map */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl overflow-hidden" style={{ height: 500 }}>
+        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm" style={{ height: 500 }}>
           <MapContainer center={[23.7951, 90.4044]} zoom={12} style={{ height: '100%', width: '100%' }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="© OpenStreetMap" />
             {filtered.map(loc => (
@@ -61,14 +61,14 @@ export function CityMapPage() {
                 <Popup>
                   <div className="min-w-32">
                     <p className="font-semibold text-sm">{loc.name}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">{loc.address}</p>
-                    {loc.openingHours && <p className="text-xs text-gray-400 mt-0.5">⏰ {loc.openingHours}</p>}
-                    {loc.contact && <p className="text-xs text-gray-400">📞 {loc.contact}</p>}
+                    <p className="text-xs text-slate-500 mt-0.5">{loc.address}</p>
+                    {loc.openingHours && <p className="text-xs text-slate-400 mt-1">⏰ {loc.openingHours}</p>}
+                    {loc.contact && <p className="text-xs text-slate-400 mt-0.5">📞 {loc.contact}</p>}
                     <button
                       onClick={() => navigate('/citizen/report')}
-                      className="mt-2 text-xs text-[#1a4b8c] hover:underline flex items-center gap-1"
+                      className="mt-3 text-xs font-semibold text-red-600 hover:text-red-700 hover:underline flex items-center gap-1"
                     >
-                      <AlertTriangle size={10} /> Report a Problem Here
+                      <AlertTriangle size={12} /> Report Issue Here
                     </button>
                   </div>
                 </Popup>
@@ -78,20 +78,21 @@ export function CityMapPage() {
         </div>
 
         {/* Location list */}
-        <div className="bg-white border border-gray-200 rounded-xl overflow-y-auto" style={{ maxHeight: 500 }}>
-          <div className="p-4 border-b border-gray-100">
-            <p className="font-semibold text-sm text-gray-900">{filtered.length} Location{filtered.length !== 1 ? 's' : ''}</p>
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-y-auto shadow-sm" style={{ maxHeight: 500 }}>
+          <div className="p-4 border-b border-slate-100 bg-slate-50/50 sticky top-0 z-10">
+            <p className="font-bold text-sm text-slate-900">{filtered.length} Location{filtered.length !== 1 ? 's' : ''} Found</p>
           </div>
-          <div className="divide-y divide-gray-50">
+          <div className="divide-y divide-slate-100">
             {filtered.map(loc => (
               <button
                 key={loc.id}
                 onClick={() => setSelected(loc)}
-                className={`w-full text-left p-4 hover:bg-gray-50 transition-colors ${selected?.id === loc.id ? 'bg-[#1a4b8c]/5' : ''}`}
+                className={`w-full text-left p-4 hover:bg-blue-50/50 transition-colors ${selected?.id === loc.id ? 'bg-blue-50 border-l-4 border-blue-600' : 'border-l-4 border-transparent'}`}
               >
-                <p className="font-medium text-sm text-gray-900">{loc.name}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{loc.category} · {loc.address}</p>
-                {loc.openingHours && <p className="text-xs text-gray-400 mt-0.5">⏰ {loc.openingHours}</p>}
+                <p className="font-semibold text-sm text-slate-900">{loc.name}</p>
+                <p className="text-xs font-medium text-blue-600 mt-1 uppercase tracking-wider">{loc.category}</p>
+                <p className="text-xs text-slate-500 mt-1 truncate">{loc.address}</p>
+                {loc.openingHours && <p className="text-xs text-slate-400 mt-2">⏰ {loc.openingHours}</p>}
               </button>
             ))}
           </div>
