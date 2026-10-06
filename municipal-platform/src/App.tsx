@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { AppShell } from './components/layout/AppShell';
 
-// Landing Role Selector
-import { RoleSelectPage } from './pages/RoleSelectPage';
+// Landing & Authentication
+import { LoginPage } from './pages/LoginPage';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 // Citizen Pages
 import { CitizenHomePage } from './pages/citizen/CitizenHomePage';
@@ -60,12 +61,13 @@ export default function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          {/* Landing Persona & Role Switcher */}
-          <Route path="/" element={<RoleSelectPage />} />
+          {/* Landing Authentication */}
+          <Route path="/" element={<LoginPage />} />
 
           {/* Citizen Portal */}
-          <Route path="/citizen" element={<AppShell />}>
-            <Route index element={<CitizenHomePage />} />
+          <Route element={<ProtectedRoute allowedRoles={['citizen']} />}>
+            <Route path="/citizen" element={<AppShell />}>
+              <Route index element={<CitizenHomePage />} />
             <Route path="services" element={<ServicesPage />} />
             <Route path="services/birth-registration" element={<BirthRegistrationPage />} />
             <Route path="services/death-certificate" element={<DeathCertificatePage />} />
@@ -90,11 +92,13 @@ export default function App() {
             <Route path="notices" element={<NoticesPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            </Route>
           </Route>
 
           {/* Municipal Staff Portal */}
-          <Route path="/staff" element={<AppShell />}>
-            <Route index element={<StaffDashboardPage />} />
+          <Route element={<ProtectedRoute allowedRoles={['staff']} />}>
+            <Route path="/staff" element={<AppShell />}>
+              <Route index element={<StaffDashboardPage />} />
             <Route path="applications" element={<StaffApplicationsPage />} />
             <Route path="applications/:id" element={<StaffApplicationDetailPage />} />
             <Route path="reports" element={<StaffReportsPage />} />
@@ -103,11 +107,13 @@ export default function App() {
             <Route path="events" element={<StaffEventsPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="profile" element={<StaffProfilePage />} />
+            </Route>
           </Route>
 
           {/* Administrator Portal */}
-          <Route path="/admin" element={<AppShell />}>
-            <Route index element={<AdminDashboardPage />} />
+          <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+            <Route path="/admin" element={<AppShell />}>
+              <Route index element={<AdminDashboardPage />} />
             <Route path="users" element={<AdminUsersPage />} />
             <Route path="services" element={<AdminServicesPage />} />
             <Route path="reports" element={<AdminReportsPage />} />
@@ -118,6 +124,7 @@ export default function App() {
             <Route path="facilities" element={<AdminFacilitiesPage />} />
             <Route path="activity" element={<AdminActivityPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
+            </Route>
           </Route>
 
           {/* Fallback */}
