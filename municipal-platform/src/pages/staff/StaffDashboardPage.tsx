@@ -23,67 +23,94 @@ export function StaffDashboardPage() {
   return (
     <div className="space-y-6">
       {/* Officer Welcome Header */}
-      <div className="bg-gradient-to-r from-[#1a4b8c] to-[#0f3060] rounded-xl p-6 text-white shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0f3060] to-[#1a4b8c] rounded-2xl p-8 text-white shadow-lg">
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span className="text-xs uppercase tracking-wider font-semibold text-blue-200">
-              Departmental Operations Console
-            </span>
-            <h1 className="text-2xl font-bold mt-0.5">Welcome, {currentUser?.name}</h1>
-            <p className="text-white/80 text-sm mt-1">
-              {userDept} · Dhaka North City Corporation
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm font-medium text-blue-100 mb-4 border border-white/20 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-blue-400"></span> Staff Operations
+            </div>
+            <h1 className="text-3xl font-bold mb-2 tracking-tight">Welcome back, {currentUser?.name}</h1>
+            <p className="text-blue-100/90 text-sm max-w-lg leading-relaxed flex items-center gap-2">
+              <Building2 size={16} /> {userDept}
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white border border-white/20">
-              Active Officer Session
-            </span>
+          <div className="flex items-center gap-4 bg-white/10 p-4 rounded-xl border border-white/20 backdrop-blur-sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold">{pendingApps.length + pendingReports.length}</div>
+              <div className="text-xs text-blue-200 uppercase tracking-wider font-semibold">Total Pending</div>
+            </div>
+            <div className="w-px h-10 bg-white/20"></div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{inProgressReports.length}</div>
+              <div className="text-xs text-blue-200 uppercase tracking-wider font-semibold">In Progress</div>
+            </div>
           </div>
         </div>
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white/5 blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 -mb-10 w-40 h-40 rounded-full bg-[#2563eb]/20 blur-2xl"></div>
       </div>
 
       {/* KPI Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Pending Requests</span>
-            <Clock size={16} className="text-amber-500" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Link to="/staff/applications" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between group">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Pending Apps</span>
+            <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Clock size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{pendingApps.length}</p>
-          <Link to="/staff/applications" className="text-xs text-[#1a4b8c] hover:underline mt-2 inline-flex items-center gap-1 font-medium">
-            Review Applications <ArrowRight size={12} />
-          </Link>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{pendingApps.length}</p>
+            <p className="text-xs text-[#1a4b8c] mt-2 font-medium flex items-center gap-1 group-hover:underline">
+              Review Now <ArrowRight size={14} />
+            </p>
+          </div>
+        </Link>
+
+        <Link to="/staff/reports" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between group">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Active Reports</span>
+            <div className="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <AlertTriangle size={20} />
+            </div>
+          </div>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{pendingReports.length}</p>
+            <p className="text-xs text-[#1a4b8c] mt-2 font-medium flex items-center gap-1 group-hover:underline">
+              View Issues <ArrowRight size={14} />
+            </p>
+          </div>
+        </Link>
+
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">In Progress</span>
+            <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center">
+              <Building2 size={20} />
+            </div>
+          </div>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{inProgressReports.length}</p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Active field deployments
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Active Problem Reports</span>
-            <AlertTriangle size={16} className="text-red-500" />
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Resolved</span>
+            <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <CheckCircle2 size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{pendingReports.length}</p>
-          <Link to="/staff/reports" className="text-xs text-[#1a4b8c] hover:underline mt-2 inline-flex items-center gap-1 font-medium">
-            View Field Reports <ArrowRight size={12} />
-          </Link>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Work In Progress</span>
-            <Building2 size={16} className="text-blue-500" />
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{deptReports.filter(r => r.status === 'Resolved').length}</p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Successfully completed
+            </p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{inProgressReports.length}</p>
-          <p className="text-xs text-gray-500 mt-2">Active site deployments</p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Resolved This Month</span>
-            <CheckCircle2 size={16} className="text-green-500" />
-          </div>
-          <p className="text-2xl font-bold text-emerald-600">
-            {deptReports.filter(r => r.status === 'Resolved').length}
-          </p>
-          <p className="text-xs text-gray-500 mt-2">Citizens notified automatically</p>
         </div>
       </div>
 
