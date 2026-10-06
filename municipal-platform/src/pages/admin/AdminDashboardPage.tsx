@@ -17,69 +17,88 @@ export function AdminDashboardPage() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-[#1a4b8c] rounded-xl p-6 text-white shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-[#311659] to-[#0f3060] rounded-2xl p-8 text-white shadow-lg">
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
-            <span className="text-xs uppercase tracking-wider font-semibold text-purple-200">
-              City Administration Command Center
-            </span>
-            <h1 className="text-2xl font-bold mt-0.5">Municipal System Overview</h1>
-            <p className="text-white/80 text-sm mt-1">
-              Dhaka North City Corporation · Centralized Municipal Digital Platform
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm font-medium text-purple-100 mb-4 border border-white/20 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Platform Operational
+            </div>
+            <h1 className="text-3xl font-bold mb-2 tracking-tight">Municipal System Overview</h1>
+            <p className="text-purple-100/90 text-sm max-w-lg leading-relaxed flex items-center gap-2">
+              <Building2 size={16} /> Dhaka North City Corporation
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white border border-white/20 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Platform Operational
-            </span>
+          <div className="hidden md:block">
+            <div className="w-32 h-32 opacity-20 relative">
+              <Activity size={128} className="absolute inset-0" strokeWidth={1} />
+            </div>
           </div>
         </div>
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white/5 blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 -mb-10 w-40 h-40 rounded-full bg-purple-500/20 blur-2xl"></div>
       </div>
 
       {/* KPI Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Total Revenue Collected</span>
-            <CreditCard size={16} className="text-emerald-500" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Total Revenue</span>
+            <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <CreditCard size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalRevenue)}</p>
-          <p className="text-xs text-emerald-600 mt-2 flex items-center gap-1 font-medium">
-            <TrendingUp size={12} /> Via Central Payment System
-          </p>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{formatCurrency(totalRevenue)}</p>
+            <p className="text-xs text-emerald-600 mt-2 font-medium flex items-center gap-1">
+              <TrendingUp size={14} /> Via Central Payment
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Total Problem Reports</span>
-            <AlertTriangle size={16} className="text-amber-500" />
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Reports</span>
+            <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center">
+              <AlertTriangle size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{reports.length}</p>
-          <p className="text-xs text-gray-500 mt-2">
-            Resolution Rate: <strong className="text-emerald-600">{resolutionRate}%</strong> ({resolvedReports} fixed)
-          </p>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{reports.length}</p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Resolution Rate: <strong className="text-emerald-600">{resolutionRate}%</strong>
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Service Applications</span>
-            <FileText size={16} className="text-blue-500" />
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Applications</span>
+            <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+              <FileText size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{applications.length}</p>
-          <p className="text-xs text-gray-500 mt-2">
-            Across 5 municipal departments
-          </p>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{applications.length}</p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Across municipal departments
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center justify-between text-gray-500 mb-2">
-            <span className="text-xs font-semibold uppercase">Map Infrastructure Points</span>
-            <MapPin size={16} className="text-purple-500" />
+        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between">
+          <div className="flex items-center justify-between text-slate-500 mb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider">Infrastructure</span>
+            <div className="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
+              <MapPin size={20} />
+            </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{mapLocations.length}</p>
-          <p className="text-xs text-gray-500 mt-2">
-            Active GIS location pins
-          </p>
+          <div>
+            <p className="text-3xl font-bold text-slate-800">{mapLocations.length}</p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Active GIS location pins
+            </p>
+          </div>
         </div>
       </div>
 
