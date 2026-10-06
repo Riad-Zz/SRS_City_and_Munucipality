@@ -33,40 +33,53 @@ export function CitizenHomePage() {
 
   return (
     <div className="space-y-6">
-      {/* Welcome */}
-      <div className="bg-[#1a4b8c] rounded-xl p-6 text-white">
-        <h1 className="text-xl font-bold mb-1">Good {getGreeting()}, {currentUser?.name.split(' ')[0]}</h1>
-        <p className="text-white/70 text-sm">Welcome to the Dhaka North City Corporation digital services platform.</p>
-        <div className="flex flex-wrap gap-3 mt-4">
-          <Link to="/citizen/report" className="bg-white text-[#1a4b8c] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-50 transition-colors flex items-center gap-2">
-            <AlertTriangle size={15} /> Report a Problem
-          </Link>
-          <Link to="/citizen/services" className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2">
-            <FileText size={15} /> Apply for Service
-          </Link>
+      {/* Welcome Hero */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0f3060] to-[#1a4b8c] rounded-2xl p-8 text-white shadow-lg">
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm font-medium text-blue-100 mb-4 border border-white/20 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span> Citizen Portal
+          </div>
+          <h1 className="text-3xl font-bold mb-2 tracking-tight">Good {getGreeting()}, {currentUser?.name.split(' ')[0]}</h1>
+          <p className="text-blue-100/90 text-sm max-w-lg leading-relaxed">
+            Welcome to the Dhaka North City Corporation digital services platform. Access municipal services, track your applications, and stay updated.
+          </p>
+          <div className="flex flex-wrap gap-4 mt-6">
+            <Link to="/citizen/report" className="bg-white text-[#0f3060] px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-50 transition-all shadow-sm flex items-center gap-2">
+              <AlertTriangle size={16} /> Report a Problem
+            </Link>
+            <Link to="/citizen/services" className="bg-[#2563eb]/20 hover:bg-[#2563eb]/40 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all border border-blue-400/30 flex items-center gap-2 backdrop-blur-sm">
+              <FileText size={16} /> Apply for Service
+            </Link>
+          </div>
         </div>
+        
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white/5 blur-3xl"></div>
+        <div className="absolute bottom-0 right-20 -mb-10 w-40 h-40 rounded-full bg-[#2563eb]/20 blur-2xl"></div>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatCard label="Active Applications" value={activeApps} icon={FileText} color="blue" link="/citizen/applications" />
         <StatCard label="Active Reports" value={activeReports} icon={AlertTriangle} color="amber" link="/citizen/reports" />
         <StatCard label="Pending Payments" value={pendingPayments} icon={CreditCard} color="red" link="/citizen/payments" />
       </div>
 
       {/* Quick Services */}
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-base font-semibold text-gray-900">Quick Services</h2>
-          <Link to="/citizen/services" className="text-sm text-[#1a4b8c] hover:underline flex items-center gap-1">All Services <ChevronRight size={14} /></Link>
+      <section className="pt-2">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold text-slate-800 tracking-tight">Quick Services</h2>
+          <Link to="/citizen/services" className="text-sm font-medium text-[#1a4b8c] hover:text-blue-700 hover:underline flex items-center gap-1 transition-colors">
+            View Directory <ChevronRight size={16} />
+          </Link>
         </div>
-        <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4">
           {QUICK_SERVICES.map(s => (
-            <Link key={s.to} to={s.to} className="flex flex-col items-center gap-2 p-3 bg-white border border-gray-200 rounded-xl hover:border-[#1a4b8c]/30 hover:shadow-sm transition-all text-center">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${s.color}`}>
-                <s.icon size={20} />
+            <Link key={s.to} to={s.to} className="flex flex-col items-center gap-3 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all text-center group">
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${s.color}`}>
+                <s.icon size={24} strokeWidth={1.5} />
               </div>
-              <span className="text-xs font-medium text-gray-700 leading-tight">{s.label}</span>
+              <span className="text-xs font-semibold text-slate-700 leading-tight group-hover:text-[#1a4b8c] transition-colors">{s.label}</span>
             </Link>
           ))}
         </div>
@@ -222,12 +235,14 @@ function StatCard({ label, value, icon: Icon, color, link }: { label: string; va
     red: 'bg-red-50 text-red-600',
   };
   return (
-    <Link to={link} className="bg-white border border-gray-200 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition-all">
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${colors[color as keyof typeof colors]}`}>
-        <Icon size={16} />
+    <Link to={link} className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center justify-between group">
+      <div>
+        <div className="text-3xl font-bold text-slate-800 mb-1">{value}</div>
+        <div className="text-sm font-medium text-slate-500">{label}</div>
       </div>
-      <div className="text-2xl font-bold text-gray-900">{value}</div>
-      <div className="text-xs text-gray-500 mt-0.5">{label}</div>
+      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${colors[color as keyof typeof colors]} group-hover:scale-110 transition-transform`}>
+        <Icon size={24} strokeWidth={1.5} />
+      </div>
     </Link>
   );
 }
