@@ -91,10 +91,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               end={item.to === `/${currentUser.role}`}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all ${
+                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-1 transition-all ${
                   isActive
-                    ? 'bg-[#1a4b8c] text-white'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'bg-gradient-to-r from-[#0f3060] to-[#1a4b8c] text-white shadow-md'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 }`
               }
             >
