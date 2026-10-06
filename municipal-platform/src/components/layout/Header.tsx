@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bell, Globe, LogOut, Menu, X, User, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';

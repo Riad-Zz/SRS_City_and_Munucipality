@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../../context/AppContext';
-import { ArrowLeft, Search, Building2, CreditCard, ShieldCheck, Download, CheckCircle2 } from 'lucide-react';
-import { formatCurrency, formatDate } from '../../../utils';
+import { ArrowLeft, Search, CreditCard, Download, CheckCircle2 } from 'lucide-react';
+import { formatCurrency } from '../../../utils';
 import { Modal } from '../../../components/ui/Modal';
 import { PaymentFlow } from '../../../components/payment/PaymentFlow';
 
 export function PropertyTaxPage() {
   const navigate = useNavigate();
-  const { currentUser, payments } = useApp();
+  const { payments } = useApp();
   const [holdingNo, setHoldingNo] = useState('DNCC-HLD-2024-004128');
   const [searched, setSearched] = useState(true);
   const [paying, setPaying] = useState(false);

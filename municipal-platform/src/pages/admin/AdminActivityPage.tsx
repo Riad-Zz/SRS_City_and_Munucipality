@@ -1,5 +1,5 @@
 import { useApp } from '../../context/AppContext';
-import { Activity, Shield, Clock, Download } from 'lucide-react';
+import { Shield, Download } from 'lucide-react';
 import { formatDateTime } from '../../utils';
 
 export function AdminActivityPage() {

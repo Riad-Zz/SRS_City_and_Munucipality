@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import {
   Users, AlertTriangle, FileText, CreditCard, Activity,
-  Megaphone, MapPin, Building2, CheckCircle2, TrendingUp, ArrowRight
+  Megaphone, MapPin, Building2, TrendingUp
 } from 'lucide-react';
 import { formatCurrency, formatDateTime } from '../../utils';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 
 export function AdminDashboardPage() {
-  const { reports, applications, payments, notices, mapLocations, systemActivities, currentUser } = useApp();
+  const { reports, applications, payments, mapLocations, systemActivities } = useApp();
 
   const totalRevenue = payments.reduce((sum, p) => sum + p.amount, 0);
   const resolvedReports = reports.filter(r => r.status === 'Resolved').length;

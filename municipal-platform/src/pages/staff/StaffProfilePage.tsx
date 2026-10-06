@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { User, Mail, Phone, Shield, Building2, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Shield, Building2, ArrowRight } from 'lucide-react';
 
 export function StaffProfilePage() {
   const { currentUser, logout } = useApp();

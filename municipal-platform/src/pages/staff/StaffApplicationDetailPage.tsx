@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { ArrowLeft, CheckCircle2, XCircle, AlertCircle, FileText, Download, UserCheck } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { StatusTimeline } from '../../components/ui/StatusTimeline';
-import { formatDate, formatDateTime, formatCurrency } from '../../utils';
+import { formatDateTime, formatCurrency } from '../../utils';
 import { Modal } from '../../components/ui/Modal';
 import type { ApplicationStatus } from '../../types';
 
 export function StaffApplicationDetailPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { applications, updateApplicationStatus, currentUser } = useApp();
   const app = applications.find(a => a.id === id);
 

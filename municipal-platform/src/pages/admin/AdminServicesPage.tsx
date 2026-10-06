@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Wrench, CheckCircle2, DollarSign, Clock, Building, Plus } from 'lucide-react';
 import { formatCurrency } from '../../utils';
 
 interface MunicipalServiceConfig {

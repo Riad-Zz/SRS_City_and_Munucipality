@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Megaphone, Plus, Trash2, Edit, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { Plus, Trash2, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { formatDate } from '../../utils';
 import { Modal } from '../../components/ui/Modal';
 import type { Notice } from '../../types';

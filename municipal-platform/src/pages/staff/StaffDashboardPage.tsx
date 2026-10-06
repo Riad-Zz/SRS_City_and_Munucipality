@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import {
-  FileText, AlertTriangle, CheckCircle2, Clock, Users, Building2,
-  Calendar, ArrowRight, ShieldAlert, ArrowUpRight
+import { AlertTriangle, CheckCircle2, Clock, Building2, ArrowRight
 } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { formatDate, formatDateTime } from '../../utils';
 
 export function StaffDashboardPage() {
-  const { currentUser, applications, reports, notifications } = useApp();
+  const { currentUser, applications, reports } = useApp();
 
   const userDept = currentUser?.department || 'Roads & Infrastructure Unit';
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import {
   Baby, ScrollText, Briefcase, Building, Trash2, CalendarDays, MapPin,
-  AlertTriangle, FileText, CreditCard, Bell, ChevronRight, CheckCircle2, Clock
+  AlertTriangle, FileText, CreditCard, Bell, ChevronRight, Clock
 } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { formatDate, formatDateTime } from '../../utils';
@@ -19,7 +19,7 @@ const QUICK_SERVICES = [
 ];
 
 export function CitizenHomePage() {
-  const { currentUser, reports, applications, payments, notifications, notices, events } = useApp();
+  const { currentUser, reports, applications, notifications, notices, events } = useApp();
 
   const myReports = reports.filter(r => r.submittedBy === currentUser?.id).slice(0, 3);
   const myApps = applications.filter(a => a.submittedBy === currentUser?.id).slice(0, 3);

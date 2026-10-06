@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Building2, Plus, Users, Clock, Trash2 } from 'lucide-react';
 import { formatCurrency } from '../../utils';
 
 export function AdminFacilitiesPage() {

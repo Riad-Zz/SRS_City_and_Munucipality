@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Upload, CheckCircle2, AlertTriangle, Camera, X, Locate } from 'lucide-react';
 import { useApp } from '../../context/AppContext';

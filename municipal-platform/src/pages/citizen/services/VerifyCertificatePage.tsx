@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Search, CheckCircle2, AlertTriangle, ShieldCheck, Download, Printer } from 'lucide-react';
+import { ArrowLeft, Search, AlertTriangle, ShieldCheck, Download, Printer } from 'lucide-react';
 import { useApp } from '../../../context/AppContext';
 import { formatDate } from '../../../utils';
 

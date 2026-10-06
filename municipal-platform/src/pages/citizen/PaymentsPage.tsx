@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { formatDateTime, formatCurrency } from '../../utils';
 import { StatusBadge } from '../../components/ui/StatusBadge';
-import { CreditCard, Download, Search } from 'lucide-react';
+import { Download, Search } from 'lucide-react';
 import { Modal } from '../../components/ui/Modal';
 import { PaymentFlow } from '../../components/payment/PaymentFlow';
 

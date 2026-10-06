@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { formatDate } from '../../utils';
-import { Calendar, MapPin, Users, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Users, CheckCircle2 } from 'lucide-react';
 import { Modal } from '../../components/ui/Modal';
 
 type Tab = 'events' | 'volunteers' | 'surveys';
@@ -10,7 +10,7 @@ export function EventsPage() {
   const { events, volunteers, surveys, currentUser, registerForEvent, applyForVolunteer, respondToSurvey } = useApp();
   const [tab, setTab] = useState<Tab>('events');
   const [surveyModal, setSurveyModal] = useState<any>(null);
-  const [surveyAnswers, setSurveyAnswers] = useState<Record<string, string | string[]>>({});
+  const [_surveyAnswers, setSurveyAnswers] = useState<Record<string, string | string[]>>({});
   const [surveyDone, setSurveyDone] = useState(false);
 
   const userId = currentUser?.id || '';

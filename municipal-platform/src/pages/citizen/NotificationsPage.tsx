@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { formatDateTime } from '../../utils';
-import { Bell, Check, CheckCheck } from 'lucide-react';
+import { Bell, CheckCheck } from 'lucide-react';
 import { EmptyState } from '../../components/ui/States';
 
 const TYPE_COLORS: Record<string, string> = {

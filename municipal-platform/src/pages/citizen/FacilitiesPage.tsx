@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { formatDate, formatCurrency } from '../../utils';
+import { formatCurrency } from '../../utils';
 import { Modal } from '../../components/ui/Modal';
 import { PaymentFlow } from '../../components/payment/PaymentFlow';
-import { Building2, Clock, Phone, Users, CheckCircle2 } from 'lucide-react';
+import { Clock, Phone, Users, CheckCircle2 } from 'lucide-react';
 import type { Facility } from '../../types';
 
 export function FacilitiesPage() {

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { Search, Filter, ArrowRight, FileText } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { formatDate } from '../../utils';
 
 export function StaffApplicationsPage() {
-  const { applications, currentUser } = useApp();
+  const { applications } = useApp();
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
   const [deptFilter, setDeptFilter] = useState('All');

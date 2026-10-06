@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Calendar, Users, BarChart3, Plus, Trash2 } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { formatDate } from '../../utils';
 import { Modal } from '../../components/ui/Modal';
 

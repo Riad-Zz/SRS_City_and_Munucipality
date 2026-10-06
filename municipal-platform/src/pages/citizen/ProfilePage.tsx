@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { User, Mail, Phone, MapPin, Shield, CreditCard, FileText, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Shield, ArrowRight } from 'lucide-react';
 
 export function ProfilePage() {
   const { currentUser, applications, reports, payments, logout } = useApp();

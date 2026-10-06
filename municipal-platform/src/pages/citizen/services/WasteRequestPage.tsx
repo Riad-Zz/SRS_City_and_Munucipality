@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useApp } from '../../../context/AppContext';
-import { CheckCircle2, ArrowLeft, Trash2, CreditCard, Clock } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, CreditCard } from 'lucide-react';
 import { formatCurrency, formatDate } from '../../../utils';
 import { Modal } from '../../../components/ui/Modal';
 import { PaymentFlow } from '../../../components/payment/PaymentFlow';
 import { StatusBadge } from '../../../components/ui/StatusBadge';
 
 export function WasteRequestPage() {
-  const navigate = useNavigate();
   const { submitWasteRequest, currentUser, wasteRequests } = useApp();
   const [address, setAddress] = useState('House 12, Road 5, Ward 03, Mirpur Section 10');
   const [wasteType, setWasteType] = useState('Construction & Renovation Debris');

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../../../context/AppContext';
-import { ArrowLeft, Trash2, Calendar, Clock, MapPin, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MapPin, AlertCircle } from 'lucide-react';
 
 export function WasteSchedulePage() {
   const { wasteSchedules } = useApp();

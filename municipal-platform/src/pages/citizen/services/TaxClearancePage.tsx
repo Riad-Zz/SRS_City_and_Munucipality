@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useApp } from '../../../context/AppContext';
-import { CheckCircle2, ArrowLeft, Download, ShieldCheck, Printer, Search } from 'lucide-react';
-import { formatDate } from '../../../utils';
+import { CheckCircle2, ArrowLeft, Download, ShieldCheck, Printer } from 'lucide-react';
 
 export function TaxClearancePage() {
   const navigate = useNavigate();
-  const { submitApplication, currentUser, applications } = useApp();
+  const { submitApplication, currentUser } = useApp();
   const [holdingNo, setHoldingNo] = useState('DNCC-HLD-2024-004128');
   const [purpose, setPurpose] = useState('Bank Loan / Title Transfer Verification');
   const [submittedApp, setSubmittedApp] = useState<any>(null);
-
-  // Check if citizen already has an approved tax clearance application
-  const existingClearance = applications.find(a =>
-    a.serviceType === 'tax-clearance' &&
-    (a.status === 'Completed' || a.status === 'Approved')
-  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

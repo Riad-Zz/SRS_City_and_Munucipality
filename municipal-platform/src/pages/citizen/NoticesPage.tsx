@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { formatDate } from '../../utils';
 import { Megaphone, AlertTriangle } from 'lucide-react';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Search, Download, FileText } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { formatDate } from '../../utils';
 

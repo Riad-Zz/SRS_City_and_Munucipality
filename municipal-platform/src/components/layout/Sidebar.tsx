@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, FileText, AlertTriangle, CreditCard, MapPin,
-  Building2, Calendar, Megaphone, Bell, User, Home, Wrench,
-  Users, Settings, Activity, ClipboardList, BarChart3
+  Building2, Calendar, Megaphone, Bell, User, Wrench,
+  Users, Settings, Activity, ClipboardList
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 

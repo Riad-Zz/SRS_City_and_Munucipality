@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { ArrowLeft, CheckCircle2, MapPin, Clock, Camera, Send, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, MapPin, Camera, Send } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { StatusTimeline } from '../../components/ui/StatusTimeline';
 import { formatDateTime, REPORT_STATUS_STEPS } from '../../utils';

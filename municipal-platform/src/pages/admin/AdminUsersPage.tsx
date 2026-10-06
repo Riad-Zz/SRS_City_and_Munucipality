@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useApp } from '../../context/AppContext';
 import { MOCK_USERS } from '../../data/mockData';
-import { Users, Search, UserCheck, Shield, Plus, CheckCircle2 } from 'lucide-react';
+import { Search, Plus, CheckCircle2 } from 'lucide-react';
 import { Modal } from '../../components/ui/Modal';
 import type { User, UserRole } from '../../types';
 

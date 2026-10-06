@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useApp } from '../../../context/AppContext';
-import { CheckCircle2, ArrowLeft, CreditCard, Building2, Upload } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, CreditCard } from 'lucide-react';
 import { formatCurrency } from '../../../utils';
 import { Modal } from '../../../components/ui/Modal';
 import { PaymentFlow } from '../../../components/payment/PaymentFlow';

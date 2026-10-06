@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import type { AppState, User, Report, Application, Payment, Notification, Booking, Event, VolunteerOpportunity, Survey, Notice, MapLocation, WasteRequest, SystemActivity, ReportStatus, ApplicationStatus, Language } from '../types';
-import {
-  MOCK_USERS, MOCK_REPORTS, MOCK_APPLICATIONS, MOCK_PAYMENTS, MOCK_NOTIFICATIONS,
+import type { AppState, User, Report, Application, Payment, Notification, Booking, Notice, MapLocation, WasteRequest, SystemActivity, ReportStatus, ApplicationStatus, Language } from '../types';
+import { MOCK_REPORTS, MOCK_APPLICATIONS, MOCK_PAYMENTS, MOCK_NOTIFICATIONS,
   MOCK_FACILITIES, MOCK_BOOKINGS, MOCK_EVENTS, MOCK_VOLUNTEERS, MOCK_SURVEYS,
   MOCK_NOTICES, MOCK_MAP_LOCATIONS, MOCK_WASTE_SCHEDULES, MOCK_WASTE_REQUESTS,
   MOCK_SYSTEM_ACTIVITIES, REPORT_TYPE_DEPARTMENT_MAP,

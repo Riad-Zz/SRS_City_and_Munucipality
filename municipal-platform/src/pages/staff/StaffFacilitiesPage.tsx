@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Building2, Calendar, Clock, User, CheckCircle2 } from 'lucide-react';
-import { formatCurrency, formatDate } from '../../utils';
+import { formatCurrency } from '../../utils';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 
 export function StaffFacilitiesPage() {

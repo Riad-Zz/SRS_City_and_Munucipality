@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { Settings, Shield, Bell, Database, Globe, ArrowRight, UserCheck } from 'lucide-react';
+import { Database, Globe, ArrowRight, UserCheck } from 'lucide-react';
 
 export function AdminSettingsPage() {
-  const { currentUser, logout, language, setLanguage } = useApp();
+  const { logout, language, setLanguage } = useApp();
   const navigate = useNavigate();
 
   return (

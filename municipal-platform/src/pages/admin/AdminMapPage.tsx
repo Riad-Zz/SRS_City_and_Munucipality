@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { MapPin, Plus, Trash2, Edit, CheckCircle2 } from 'lucide-react';
+import { Plus, Trash2, CheckCircle2 } from 'lucide-react';
 import { Modal } from '../../components/ui/Modal';
 import type { MapLocation } from '../../types';
 

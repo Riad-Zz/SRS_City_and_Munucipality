@@ -4,7 +4,7 @@ import { useApp } from '../../context/AppContext';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { StatusTimeline } from '../../components/ui/StatusTimeline';
 import { ArrowLeft, CreditCard, Download } from 'lucide-react';
-import { formatDate, formatDateTime } from '../../utils';
+import { formatDate } from '../../utils';
 import { Modal } from '../../components/ui/Modal';
 import { PaymentFlow } from '../../components/payment/PaymentFlow';
 
