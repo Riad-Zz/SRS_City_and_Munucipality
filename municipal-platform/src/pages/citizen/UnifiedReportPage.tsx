@@ -157,30 +157,37 @@ export function UnifiedReportPage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <AlertTriangle size={20} className="text-[#1a4b8c]" /> Report a Problem
-        </h1>
-        <p className="text-sm text-gray-500 mt-1">Report any municipal problem. You do not need to know which department handles it.</p>
+    <div className="max-w-2xl mx-auto space-y-6">
+      <div className="bg-gradient-to-br from-[#0f3060] to-[#1a4b8c] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+        <div className="relative z-10">
+          <h1 className="text-2xl font-bold flex items-center gap-2 mb-2">
+            <AlertTriangle size={24} className="text-amber-400" /> Report a Problem
+          </h1>
+          <p className="text-blue-100 text-sm max-w-lg">Report any municipal problem. You do not need to know which department handles it. We will automatically route it to the right team.</p>
+        </div>
+        <div className="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 rounded-full bg-white/5 blur-2xl"></div>
       </div>
 
       {/* Progress */}
-      <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-1">
+      <div className="flex items-center justify-between px-2">
         {STEPS.map((s, i) => (
-          <div key={s} className="flex items-center flex-shrink-0">
-            <div className={`flex items-center gap-1.5 text-sm ${step === i + 1 ? 'font-semibold text-[#1a4b8c]' : step > i + 1 ? 'text-green-600' : 'text-gray-400'}`}>
-              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${step === i + 1 ? 'bg-[#1a4b8c] text-white' : step > i + 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
-                {step > i + 1 ? '✓' : i + 1}
-              </div>
-              <span className="hidden sm:block">{s}</span>
+          <div key={s} className="flex flex-col items-center relative z-10 w-full">
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${step === i + 1 ? 'bg-blue-600 text-white shadow-md ring-4 ring-blue-50' : step > i + 1 ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-500'}`}>
+              {step > i + 1 ? <CheckCircle2 size={16} /> : i + 1}
             </div>
-            {i < 4 && <div className="w-6 sm:w-10 h-0.5 bg-gray-200 ml-2" />}
+            <span className={`text-[10px] uppercase tracking-wider mt-2 hidden sm:block font-semibold transition-colors duration-300 ${step === i + 1 ? 'text-blue-700' : step > i + 1 ? 'text-emerald-600' : 'text-slate-400'}`}>
+              {s}
+            </span>
+            {i < STEPS.length - 1 && (
+              <div className="absolute top-4 left-1/2 w-full h-0.5 -z-10" style={{ transform: 'translateX(50%)' }}>
+                <div className={`h-full transition-all duration-500 ${step > i + 1 ? 'bg-emerald-400' : 'bg-slate-200'}`} style={{ width: step > i + 1 ? '100%' : '100%' }} />
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
         {/* Step 1: Problem Type */}
         {step === 1 && (
           <div>
